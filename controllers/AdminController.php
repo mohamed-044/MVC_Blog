@@ -18,10 +18,29 @@ class AdminController {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
 
+        // On récupère le paramètre de tri
+        $sortType = Utils::request("sort", "");
+
+        // Tri des articles selon le paramètre
+        if ($sortType === "views") {
+            usort($articles, function($a, $b) {
+                return $b->getViews() <=> $a->getViews();
+            });
+        } elseif ($sortType === "commentsViews") {
+            usort($articles, function($a, $b) {
+                return $b->countComments() <=> $a->countComments();
+            });
+        } elseif ($sortType === "dateCreation") {
+            usort($articles, function($a, $b) {
+                return $b->getDateCreation()->getTimestamp() <=> $a->getDateCreation()->getTimestamp();
+            });
+        }
+
         // On affiche la page d'administration.
         $view = new View("Administration");
         $view->render("admin", [
-            'articles' => $articles
+            'articles' => $articles,
+            'sortType' => $sortType
         ]);
     }
 
