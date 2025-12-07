@@ -313,6 +313,11 @@ a.info {
     color: white;
 }
 
+.secondBackgroundColor {
+    background-color: var(--dateColor);
+    color: white;
+}
+
 .articleLine {
     display: flex; 
 }

@@ -21,8 +21,8 @@
             <option value="dateCreationDe" <?= $sortType === 'dateCreationDe' ? 'selected' : '' ?>>Date de publication (décroissant)</option>
         </select>
     </form>
-    <?php foreach ($articles as $article) { ?>
-        <div class="articleLine">
+    <?php foreach ($articles as $index => $article) { ?>
+        <div class="articleLine <?= $index % 2 !== 0 ? 'secondBackgroundColor' : '' ?>">
             <div class="title"><?= $article->getTitle() ?></div>
             <div class="content"><?= $article->getContent(200) ?></div>
             <div class="views"><?= $article->getViews() ?></div>
