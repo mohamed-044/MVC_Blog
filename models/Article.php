@@ -11,6 +11,7 @@
     private string $content = "";
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null;  
+    private int $views = 0;
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -126,5 +127,27 @@
     public function getDateUpdate() : ?DateTime 
     {
         return $this->dateUpdate;
+    }
+
+    /**
+     * Setter pour le nombre de vues.
+     * Par défaut remplace la valeur. Si $relative vaut true, ajoute $views
+     * au compteur actuel (utile pour incrémenter les vues lorsque l'article
+     * est consulté).
+     * @param int $views
+     * @param bool $relative : false => remplace, true => ajoute (incrémente)
+     */
+    public function setViews(int $views, bool $relative = false) : void 
+    {
+        if ($relative) {
+            $this->views += $views;
+        } else {
+            $this->views = $views;
+        }
+    }
+
+    public function getViews() : int 
+    {
+        return $this->views;
     }
  }
