@@ -10,8 +10,8 @@
 <div class="adminArticle">
     <form method="get" action="index.php">
         <input type="hidden" name="action" value="admin">
-        <label for="sortSelect">Trier par :</label>
-        <select id="sortSelect" name="sort" onchange="this.form.submit()">
+        <label for="sortSelect">Trier par :</label >
+        <select class="submit" id="sortSelect" name="sort" onchange="this.form.submit()">
             <option value=""></option>
             <option value="views" <?= $sortType === 'views' ? 'selected' : '' ?>>Nombre de vues</option>
             <option value="commentsViews" <?= $sortType === 'commentsViews' ? 'selected' : '' ?>>Nombre de commentaires</option>
