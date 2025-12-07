@@ -8,6 +8,16 @@
 <h2>Edition des articles</h2>
 
 <div class="adminArticle">
+    <form method="get" action="index.php">
+        <input type="hidden" name="action" value="admin">
+        <label for="sortSelect">Trier par :</label>
+        <select id="sortSelect" name="sort" onchange="this.form.submit()">
+            <option value=""></option>
+            <option value="views" <?= $sortType === 'views' ? 'selected' : '' ?>>Nombre de vues</option>
+            <option value="commentsViews" <?= $sortType === 'commentsViews' ? 'selected' : '' ?>>Nombre de commentaires</option>
+            <option value="dateCreation" <?= $sortType === 'dateCreation' ? 'selected' : '' ?>>Date de publication de l'article</option>
+        </select>
+    </form>
     <?php foreach ($articles as $article) { ?>
         <div class="articleLine">
             <div class="title"><?= $article->getTitle() ?></div>
