@@ -332,6 +332,21 @@ a.info {
     flex-grow: 1;
 }
 
+.articleLine .views {
+    min-width: 100px;
+    width: 100px;
+}
+
+.articleLine .commentsViews {
+    min-width: 100px;
+    width: 100px;
+}
+
+.articleLine .dateCreation {
+    min-width: 150px;
+    width: 150px;
+}
+
 .articleLine > div {
     padding: 20px;
     border: 1px solid var(--backgroundColor);
