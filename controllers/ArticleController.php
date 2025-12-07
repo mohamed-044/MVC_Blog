@@ -37,9 +37,12 @@ class ArticleController
 
         $commentManager = new CommentManager();
         $comments = $commentManager->getAllCommentsByArticleId($id);
+        // Récupération du nombre de commentaires (méthode plus efficace si on ne veut
+        // que le compteur sans charger les objets Comment)
+        $commentsCount = $commentManager->countCommentsByArticleId($id);
 
         $view = new View($article->getTitle());
-        $view->render("detailArticle", ['article' => $article, 'comments' => $comments]);
+        $view->render("detailArticle", ['article' => $article, 'comments' => $comments, 'commentsCount' => $commentsCount]);
     }
 
     /**

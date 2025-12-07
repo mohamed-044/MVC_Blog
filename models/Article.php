@@ -150,4 +150,16 @@
     {
         return $this->views;
     }
+
+    /**
+     * Retourne le nombre de commentaires pour cet article.
+     * Délègue à CommentManager::countCommentsByArticleId pour éviter
+     * de charger tous les objets Comment si on ne veut que le compteur.
+     * @return int
+     */
+    public function countComments() : int
+    {
+        $commentManager = new CommentManager();
+        return $commentManager->countCommentsByArticleId($this->getId());
+    }
  }
