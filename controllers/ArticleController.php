@@ -31,6 +31,10 @@ class ArticleController
             throw new Exception("L'article demandé n'existe pas.");
         }
 
+        // Incrémenter les vues en base et mettre à jour l'objet Article
+        $articleManager->incrementViewsById($id, 1);
+        $article->setViews(1, true);
+
         $commentManager = new CommentManager();
         $comments = $commentManager->getAllCommentsByArticleId($id);
 
