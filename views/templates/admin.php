@@ -13,9 +13,12 @@
         <label for="sortSelect">Trier par :</label >
         <select class="submit" id="sortSelect" name="sort" onchange="this.form.submit()">
             <option value=""></option>
-            <option value="views" <?= $sortType === 'views' ? 'selected' : '' ?>>Nombre de vues</option>
-            <option value="commentsViews" <?= $sortType === 'commentsViews' ? 'selected' : '' ?>>Nombre de commentaires</option>
-            <option value="dateCreation" <?= $sortType === 'dateCreation' ? 'selected' : '' ?>>Date de publication de l'article</option>
+            <option value="views" <?= $sortType === 'views' ? 'selected' : '' ?>>Nombre de vues (croissant)</option>
+            <option value="commentsViews" <?= $sortType === 'commentsViews' ? 'selected' : '' ?>>Nombre de commentaires (croissant)</option>
+            <option value="dateCreation" <?= $sortType === 'dateCreation' ? 'selected' : '' ?>>Date de publication (croissant)</option>
+            <option value="viewsDe" <?= $sortType === 'viewsDe' ? 'selected' : '' ?>>Nombre de vues (décroissant)</option>
+            <option value="commentsViewsDe" <?= $sortType === 'commentsViewsDe' ? 'selected' : '' ?>>Nombre de commentaires (décroissant)</option>
+            <option value="dateCreationDe" <?= $sortType === 'dateCreationDe' ? 'selected' : '' ?>>Date de publication (décroissant)</option>
         </select>
     </form>
     <?php foreach ($articles as $article) { ?>

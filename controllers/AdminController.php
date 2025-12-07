@@ -35,6 +35,19 @@ class AdminController {
                 return $b->getDateCreation()->getTimestamp() <=> $a->getDateCreation()->getTimestamp();
             });
         }
+            elseif ($sortType === "viewsDe") {
+            usort($articles, function($a, $b) {
+                return $a->getViews() <=> $b->getViews();
+            });
+        } elseif ($sortType === "commentsViewsDe") {
+            usort($articles, function($a, $b) {
+                return $a->countComments() <=> $b->countComments();
+            });
+        } elseif ($sortType === "dateCreationDe") {
+            usort($articles, function($a, $b) {
+                return $a->getDateCreation()->getTimestamp() <=> $b->getDateCreation()->getTimestamp();
+            });
+        }
 
         // On affiche la page d'administration.
         $view = new View("Administration");
