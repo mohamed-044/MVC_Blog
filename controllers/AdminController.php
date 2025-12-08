@@ -22,7 +22,11 @@ class AdminController {
         $sortType = Utils::request("sort", "");
 
         // Tri des articles selon le paramètre
-        if ($sortType === "views") {
+        if ($sortType === "title") {
+            usort($articles, function($a, $b) {
+                return $b->getTitle() <=> $a->getTitle();
+            });
+        } elseif ($sortType === "views") {
             usort($articles, function($a, $b) {
                 return $b->getViews() <=> $a->getViews();
             });
@@ -34,8 +38,12 @@ class AdminController {
             usort($articles, function($a, $b) {
                 return $b->getDateCreation()->getTimestamp() <=> $a->getDateCreation()->getTimestamp();
             });
+        } elseif ($sortType === "titleDe") {
+            usort($articles, function($a, $b) {
+                return $a->getTitle() <=> $b->getTitle();
+            });
         }
-            elseif ($sortType === "viewsDe") {
+          elseif ($sortType === "viewsDe") {
             usort($articles, function($a, $b) {
                 return $a->getViews() <=> $b->getViews();
             });
