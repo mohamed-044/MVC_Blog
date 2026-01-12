@@ -44,4 +44,25 @@ class CommentController
         // On redirige vers la page de l'article.
         Utils::redirect("showArticle", ['id' => $idArticle]);
     }
+
+    public function deleteComment()
+    {
+        if (!isset($_GET['id'])) {
+            throw new Exception("Aucun commentaire spécifié.");
+        }
+
+        $commentId = (int) $_GET['id'];
+
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($commentId);
+
+        if (!$comment) {
+            throw new Exception("Commentaire introuvable.");
+        }
+
+        $commentManager->deleteComment($comment);
+
+        header("Location: index.php?action=admin");
+        exit;
+    }
 }

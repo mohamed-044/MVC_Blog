@@ -18,6 +18,8 @@ class AdminController {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
 
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getAllComments();
         // On récupère le paramètre de tri
         $sortType = Utils::request("sort", "");
 
@@ -61,7 +63,8 @@ class AdminController {
         $view = new View("Administration");
         $view->render("admin", [
             'articles' => $articles,
-            'sortType' => $sortType
+            'sortType' => $sortType,
+            'comments' => $comments
         ]);
     }
 

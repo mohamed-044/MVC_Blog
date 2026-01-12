@@ -36,4 +36,26 @@
     <?php } ?>
 </div>
 
+
 <a class="submit" href="index.php?action=showUpdateArticleForm">Ajouter un article</a>
+
+<h2>Commentaires</h2>
+
+<div class="adminArticle">
+    <?php foreach ($comments as $index => $comment) { ?>
+        <div class="articleLine <?= $index % 2 !== 0 ? 'secondBackgroundColor' : '' ?>">
+            <div class="title"><?= htmlspecialchars($comment->getPseudo()) ?></div>
+            <div class="content"><?= htmlspecialchars($comment->getContent()) ?></div>
+            <div class="views"><?= $comment->getIdArticle() ?></div>
+            <div class="commentsViews"><?= $article->countComments() ?></div>
+            <div class="dateCreation"><?= $comment->getDateCreation()->format('d/m/Y H:i') ?></div>
+            <div>
+                <a class="submit"
+                   href="index.php?action=deleteComment&id=<?= $comment->getId() ?>"
+                   <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce commentaire ?") ?>>
+                   Supprimer
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+</div>

@@ -38,6 +38,19 @@ class CommentManager extends AbstractEntityManager
         return null;
     }
 
+    public function getAllComments() : array
+    {
+        $sql = "SELECT * FROM comment ORDER BY date_creation DESC";
+        $result = $this->db->query($sql);
+        $comments = [];
+
+        while ($comment = $result->fetch()) {
+            $comments[] = new Comment($comment);
+        }
+
+        return $comments;
+    }
+
     /**
      * Ajoute un commentaire.
      * @param Comment $comment : l'objet Comment à ajouter.
@@ -78,5 +91,5 @@ class CommentManager extends AbstractEntityManager
         $row = $result->fetch();
         return (int) ($row['cnt'] ?? 0);
     }
-
+    
 }
